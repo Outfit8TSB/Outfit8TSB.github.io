@@ -1,5 +1,6 @@
 # InfinitePlaceAnarchy2019 - An open source fork of https://rplace.live.
 the outfit8tsb.github.io has been ended due to it's limitations.
+it will be continued on rplace.live as a dual palette canvas called january 1st.
 "Alone you can create something, but together, you can create something bigger" (or something like that)
 
 **Site link: https://outfit8tsb.github.io/**
