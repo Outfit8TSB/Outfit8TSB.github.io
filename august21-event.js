@@ -1,5 +1,5 @@
 // Show game popup
-const eventDate = 1735689600
+const eventDate = 1735689600000
 //const popup = document.getElementById("popup")
 //popup.showModal()
 
