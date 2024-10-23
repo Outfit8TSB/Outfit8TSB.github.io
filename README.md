@@ -1,4 +1,4 @@
-# rplace.live - An open source faithful recreation of r/place
+# rplace.live - An open source faithful recreation of r/place (used for testing January 1st)
 
 This site aims to be as similar to the april fools r/place event, where users were given a 2000x2000px canvas, allowing anyone to place a single pixel on it at a time. 
 
