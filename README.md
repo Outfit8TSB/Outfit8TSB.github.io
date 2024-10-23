@@ -25,7 +25,7 @@ not run commercially (That is, they should not generate more than the cost of se
 
 ### For example,
 - My app (`fork-of-a-place.tk`) connecting to `wss://server.rplace.live:443` [✅ Cool, non-commercially]
-- Making `https://rplace.live` connect to `wss://fork-of-a-place.tk` (via devtools, for example) [✅ Cool, non-commercially]
+- Making `https://rplace.live` connect to `wss://fork-of-a-place.tk` (via devtools, for example, or https://rplace.live/?server=wss://fork-of-a-place.tk:PORT&board=https://fork-of-a-place.tk:port/place) [✅ Cool, non-commercially]
 - My app (`fork-of-a-place.tk`) connecting to `wss://fork-of-a-place.tk` [❌ Not cool: Uses both different app and different server]
 
 ### Testing:
