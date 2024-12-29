@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ontouchstart="if (maincontent.contains(event.target)) event.preventDefault()" ontouchend="event.preventDefault()">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<script>
@@ -21,85 +21,92 @@
 			celebration: new Audio("./sounds/celebration.mp3")
 		}
 
-		const EMOJIS = {
-			rofl: "🤣",
-			joy: "😂",
-			cool: "😎",
-			sunglasses: "😎",
-			heart: "❤️",
-			moyai: "🗿",
-			bruh: "🗿",
-			turkey: "🇹🇷",
-			skull: "💀",
-			sus: "ඞ",
-			iran: "🇮🇷",
-			uk: "🇬🇧",
-			usa: "🇺🇸",
-			america: "🇺🇸",
-			eyes: "👀",
-			fire: "🔥",
-			thumbsup: "👍",
-			thumbsdown: "👎",
-			clown: "🤡",
-			facepalm: "🤦‍♂️",
-			ok: "👌",
-			poop: "💩",
-			rocket: "🚀",
-			tada: "🎉",
-			celebration: "🎉",
-			moneybag: "💰",
-			crown: "👑",
-			muscle: "💪",
-			beer: "🍺",
-			pizza: "🍕",
-			cookie: "🍪",
-			balloon: "🎈",
-			gift: "🎁",
-			star: "⭐️",
-			love: "😍",
-			crying: "😢",
-			angry: "😠",
-			sleepy: "😴",
-			nerd: "🤓",
-			laughing: "😆",
-			vomiting: "🤮",
-			unicorn: "🦄",
-			alien: "👽",
-			ghost: "👻",
-			skullcrossbones: "☠️",
-			explosion: "💥",
-			shush: "🤫",
-			deaf: "🧏",
-			mew:"🤫🧏",
-			pray: "🙏",
-			thinking: "🤔"
-		}
-
-		const EMOJIS_CUSTOM = {
-			amogus: '<img src="custom_emojis/amogus.png" height="24">',
-			biaoqing: '<img src="custom_emojis/biaoqing.png" height="24">',
-			deepfriedh: '<img src="custom_emojis/deepfriedh.png" height="24">',
-			edp445: '<img src="custom_emojis/edp445.png" height="24">',
-			fan: '<img src="custom_emojis/fan.png" height="24">',
-			heavy: '<img src="custom_emojis/heavy.png" height="24">',
-			herkul: '<img src="custom_emojis/herkul.png" height="24">',
-			kaanozdil: '<img src="custom_emojis/kaanozdil.png" height="24">',
-			lowtiergod: '<img src="custom_emojis/lowtiergod.png" height="24">',
-			manly: '<img src="custom_emojis/manly.png" height="24">',
-			plsaddred: '<img src="custom_emojis/plsaddred.png" height="24">',
-			rplace: '<img src="custom_emojis/rplace.png" height="24">',
-			rplacediscord: '<img src="custom_emojis/rplacediscord.png" height="24">',
-			sonic: '<img src="custom_emojis/sonic.png" height="24">',
-			transparent: '<img src="custom_emojis/transparent.png" height="24">',
-			trollface: '<img src="custom_emojis/trollface.png" height="24">',
-			// Special 'commands'
-			help: "<kbd>Chat commands: :vip, :name, :getid</kbd>",
-			name: "<kbd>Change your username</kbd>",
-			vip: "<kbd>Apply a VIP cooldown code</kbd>",
-			lookup: "<kbd>Get the IDs of all players with the given name</kbd>",
-			getid: "<kbd>View your own User Id, or provide a name to view a list of online player User Ids</kbd>",
-			whoplaced: "<kbd>View details of who placed the current pixel being hoveredd</kbd>"
-		}
+		const EMOJIS = new Map([
+			[ "rofl", "🤣" ],
+			[ "joy", "😂" ],
+			[ "cool", "😎" ],
+			[ "sunglasses", "😎" ],
+			[ "heart", "❤️" ],
+			[ "moyai", "🗿" ],
+			[ "bruh", "🗿" ],
+			[ "skull", "💀" ],
+			[ "sus", "ඞ" ],
+			[ "tr", "🇹🇷" ],
+			[ "turkey", "🇹🇷" ],
+			[ "ir", "🇮🇷" ],
+			[ "iran", "🇮🇷" ],
+			[ "uk", "🇬🇧" ],
+			[ "britain", "🇬🇧" ],
+			[ "usa", "🇺🇸" ],
+			[ "america", "🇺🇸" ],
+			[ "ru", "🇷🇺" ],
+			[ "russia", "🇷🇺" ],
+			[ "eyes", "👀" ],
+			[ "fire", "🔥" ],
+			[ "thumbsup", "👍" ],
+			[ "thumbsdown", "👎" ],
+			[ "clown", "🤡" ],
+			[ "facepalm", "🤦‍♂️" ],
+			[ "ok", "👌" ],
+			[ "poop", "💩" ],
+			[ "rocket", "🚀" ],
+			[ "tada", "🎉" ],
+			[ "celebration", "🎉" ],
+			[ "moneybag", "💰" ],
+			[ "crown", "👑" ],
+			[ "muscle", "💪" ],
+			[ "beer", "🍺" ],
+			[ "pizza", "🍕" ],
+			[ "cookie", "🍪" ],
+			[ "balloon", "🎈" ],
+			[ "gift", "🎁"],
+			[ "star", "⭐️" ],
+			[ "love", "😍" ],
+			[ "crying", "😢" ],
+			[ "angry", "😠" ],
+			[ "sleepy", "😴" ],
+			[ "nerd", "🤓" ],
+			[ "laughing", "😆" ],
+			[ "vomiting", "🤮" ],
+			[ "unicorn", "🦄" ],
+			[ "alien", "👽" ],
+			[ "ghost", "👻" ],
+			[ "skullcrossbones", "☠️" ],
+			[ "explosion", "💥" ],
+			[ "shush", "🤫" ],
+			[ "deaf", "🧏" ],
+			[ "mew", "🤫🧏" ],
+			[ "pray", "🙏" ],
+			[ "thinking", "🤔" ],
+			[ "sweat", "😅" ],
+			[ "wave", "👋"]
+		])
+		const CUSTOM_EMOJIS = new Map([
+			[ "amogus", '<img src="custom_emojis/amogus.png" height="24">' ],
+			[ "biaoqing", '<img src="custom_emojis/biaoqing.png" height="24">' ],
+			[ "deepfriedh", '<img src="custom_emojis/deepfriedh.png" height="24">' ],
+			[ "edp445", '<img src="custom_emojis/edp445.png" height="24">' ],
+			[ "fan", '<img src="custom_emojis/fan.png" height="24">' ],
+			[ "heavy", '<img src="custom_emojis/heavy.png" height="24">' ],
+			[ "herkul", '<img src="custom_emojis/herkul.png" height="24">' ],
+			[ "kaanozdil", '<img src="custom_emojis/kaanozdil.png" height="24">' ],
+			[ "lowtiergod", '<img src="custom_emojis/lowtiergod.png" height="24">' ],
+			[ "manly", '<img src="custom_emojis/manly.png" height="24">' ],
+			[ "plsaddred", '<img src="custom_emojis/plsaddred.png" height="24">' ],
+			[ "rplace", '<img src="custom_emojis/rplace.png" height="24">' ],
+			[ "rplacediscord", '<img src="custom_emojis/rplacediscord.png" height="24">' ],
+			[ "sonic", '<img src="custom_emojis/sonic.png" height="24">' ],
+			[ "transparent", '<img src="custom_emojis/transparent.png" height="24">' ],
+			[ "trollface", '<img src="custom_emojis/trollface.png" height="24">' ]
+		])
+		const COMMANDS = new Map([
+			[ "help", "<kbd>Help information for live chat</kbd>" ],
+			[ "name", "<kbd>Change your username</kbd>" ],
+			[ "vip", "<kbd>Apply a VIP code</kbd>" ],
+			[ "lookup", "<kbd>Get the IDs of all players with the given name</kbd>" ],
+			[ "getid", "<kbd>View your own User Id, or provide a name to view a list of online player User Ids</kbd>" ],
+			[ "whoplaced", "<kbd>View details of who placed the current pixel being hoveredd</kbd>" ]
+		])
 
 		// Flag emojis all sourced from openmoji.org, https://www.langoly.com/most-spoken-languages/
 		const LANG_INFOS = new Map([
@@ -125,8 +132,8 @@
 		])
 
 		const DEFAULT_THEMES = new Map([
-			[ "r/place 2022", { id: "r/place 2022", css: "rplace-2022.css", cssVersion: "11", pixelselect: "svg/pixel-select-2022.svg" }],
-			[ "r/place 2023", { id: "r/place 2023", css: "rplace-2023.css", cssVersion: "11", pixelselect: "svg/pixel-select-2023.svg" }],
+			[ "r/place 2022", { id: "r/place 2022", css: "rplace-2022.css", cssVersion: "14", pixelselect: "svg/pixel-select-2022.svg" }],
+			[ "r/place 2023", { id: "r/place 2023", css: "rplace-2023.css", cssVersion: "14", pixelselect: "svg/pixel-select-2023.svg" }],
 		])
 
 		const ADS = [
@@ -176,6 +183,8 @@
 		let setName = null // function injected by wscapsule
 		let requestPixelPlacers = null // function injected by wscapsule
 		let requestLoadChannelPrevious = null // function injected by wscapsule
+		let chatReport = null // function injected by wscapsule
+		let chatReact = null // function injected by wscapsule
 		let canvasLocked = false // Server will tell us this
 		let includesPlacer = false // Server will tell us this
 
@@ -183,12 +192,6 @@
 			let focused = true
 			call(addEventListener, window, "blur", () => focused = false)
 			call(addEventListener, window, "focus", () => focused = true)
-
-			let authSocket = {} //new WebSocket("wss://server.poemanthology.org/auth")
-			// HACK: Until enough clients are using the new server
-			if (localStorage.server?.startsWith("wss://server.rplace.tk")) {
-				delete localStorage.server
-			}
 
 			let svUri = localStorage.server || DEFAULT_SERVER
 			if (localStorage.vip) {
@@ -198,7 +201,7 @@
 			let ws = new WebSocket(svUri)
 			delete WebSocket
 
-			function chatReport(messageId, senderId) {
+			function _chatReport(messageId, senderId) {
 				const reason = prompt("Enter the reason for why you are reporting this message (max 280 chars)\n\n" +
 					`Additional info:\nMessage ID: ${messageId}\nSender ID: ${senderId}\n`)
 				if (!reason || !reason.trim()) {
@@ -213,208 +216,31 @@
 				call(send, ws, reportBuffer)
 				alert("Report sent!\nIn the meantime you can block this user by 'right clicking / press hold on the message' > 'block'")
 			}
+			chatReport = _chatReport
 
-			function createLiveChatMessage(messageId, txt, senderId, name, sendDate, repliesTo = null) {
-				let newMessage = document.createElement("div")
-				newMessage.messageId = messageId
-				newMessage.name = name
-				newMessage.originalContent = txt
+			function _chatReact(messageId, reactKey) {
+				const reactBuffer = encoder.encode("XXXXX" + reactKey)
+				reactBuffer[0] = 18
+				reactBuffer[1] = messageId >> 24
+				reactBuffer[2] = messageId >> 16
+				reactBuffer[3] = messageId >> 8
+				reactBuffer[4] = messageId & 255
+				call(send, ws, reactBuffer)
+			}
+			chatReact = _chatReact
 
-				// Sanitise regex
-				txt = sanitise(txt)
-				// Simple markdown parse regexes
-				txt = markdownParse(txt)
-				// Custom emoji regex
-				txt = txt.replaceAll(/:([a-z-_]{0,16}):/g, (full, source) => {
-					// If this emoji is the only thing in the message we can make it big!
-					if (txt.match(source).length == 1 && !txt.replace(full, "").trim()) {
-						return `<img src="custom_emojis/${source}.png" alt=":${source}:" title=":${source}:" width="48" height="48">`
-					}
-
-					// Else smaller and inline with the rest of the message
-					return `<img src="custom_emojis/${source}.png" alt=":${source}:" title=":${source}:" width="16" height="16">`
-				})
-				// Coordinate to clickable link regex
-				txt = txt.replaceAll(/([0-9]+),\s*([0-9]+)/g, (element) => {
-					let px = parseInt(element.split(",")[0].trim())
-					let py = parseInt(element.split(",")[1].trim())
-					if (px != NaN && py != NaN) {
-						return `<a href="#" onclick="event.preventDefault();x=${px};y=${py};pos();">${px},${py}</a>`
-					}
-				})
-
-				let namePart = document.createElement("span")
-				if (messageId === 0) {
-					namePart.classList.add("rainbow-glow")
-				}
-				else {
-					namePart.style.color = CHAT_COLOURS[hash("" + senderId) & 7]
-				}
-				namePart.title = (new Date(sendDate * 1000)).toLocaleString()
-				namePart.textContent = `[${name || ("#" + senderId)}] `
-				let txtPart = document.createElement("span")
-				txtPart.innerHTML = txt
-
-				if (repliesTo != null) {
-					let replyingMessage = null
-					for (let message of cMessages[currentChannel]) {
-						if (message.messageId == repliesTo) {
-							replyingMessage = message
-							break
-						}
-					}
-					if (replyingMessage == null) {
-						replyingMessage = {
-							name: "[?????]",
-							originalContent: translate("messageCouldntBeLoaded"),
-							fake: true
-						}
-					}
-
-					let repliesPart = document.createElement("p")
-					if (!replyingMessage.fake) {
-						repliesPart.onclick = function() {
-							let height = 0
-							for (let message of cMessages[currentChannel]) {
-								if (message == replyingMessage) break
-								height += message.offsetHeight
-							}
-
-							replyingMessage.setAttribute("highlight", "true")
-							setTimeout(() => {
-								replyingMessage.removeAttribute("highlight")
-							}, 500)
-
-							chatMessages.scroll({ top: height, left: 0, behavior: "smooth" })
-						}
-					}
-					repliesPart.innerText = `↪️ ${replyingMessage.name} ${replyingMessage.originalContent}`
-					newMessage.appendChild(repliesPart)
-				}
-
-				newMessage.appendChild(namePart)
-				newMessage.appendChild(txtPart)
-				if (messageId > 0) { // Disable interactivity for system messages
-					namePart.onclick = (e) => chatMentionUser(senderId)
-					newMessage.oncontextmenu = (e) => onChatContext(e, senderId, messageId)
-
-					let actionsPart = document.createElement("div")
-					let replyBtn = document.createElement("img")
-					replyBtn.onclick = function(e) { chatReply(messageId, senderId) }
-					replyBtn.title = translate("replyTo")
-					replyBtn.tabIndex = "0"
-					replyBtn.src = "svg/reply-action.svg"
-					actionsPart.appendChild(replyBtn)
-
-					let reportBtn = document.createElement("img")
-					reportBtn.onclick = function(e) { chatReport(messageId, senderId) }
-					reportBtn.title = translate("report")
-					replyBtn.tabIndex = "0"
-					reportBtn.src = "svg/report-action.svg"
-					actionsPart.appendChild(reportBtn)
-
-					if (localStorage.vip?.startsWith("!")) {
-						let moderateBtn = document.createElement("img")
-						moderateBtn.onclick = function(e) { chatModerate("delete", senderId, messageId, newMessage) }
-						replyBtn.title = "Moderation options"
-						replyBtn.tabIndex = "0"
-						moderateBtn.src = "svg/moderate-action.svg"
-						actionsPart.appendChild(moderateBtn)
-					}
-					newMessage.appendChild(actionsPart)
-				}
-
-				return newMessage
+			function createLiveChatMessage(messageId, txt, senderId, name, sendDate, repliesTo = null, reactions = null) {
+				const message = document.createElement("r-live-chat-message")
+				message.messageId = messageId
+				message.content = txt
+				message.senderId = senderId
+				message.name = name
+				message.sendDate = sendDate
+				message.repliesTo = repliesTo
+				message.reactions = reactions
+				return message
 			}
 
-			authSocket.binaryType = "arraybuffer"
-			authSocket.onopen = function() {
-				// Then we know we have been redirected from a reddit oauth, and will now authenticate with auth server
-				if (redditOauthCode) {
-					let cb = encoder.encode("X" + redditOauthCode)
-					cb[0] = 9 // ClientPackets.RedditCreateAccount
-					call(send, authSocket, cb)
-				}
-				else if (localStorage.refreshToken) {
-					let ab = encoder.encode("X" + localStorage.refreshToken)
-					ab[0] = 10 // ClientPackets.RedditAuthenticate
-					call(send, authSocket, ab)
-				}
-				else if (localStorage.accountToken) {
-					let ab = encoder.encode("X" + localStorage.accountToken)
-					ab[0] = 5 // ClientPackets.Authenticate
-					call(send, authSocket, ab)
-				}
-			}
-			authSocket.onmessage = async function({data}) {
-				data = new DataView(data)
-
-				switch (data.getUint8(0)) {
-				case 0: { // ServerPackets.Fail
-					console.error(decoder.decode(data.buffer.slice(1)))
-					break
-				}
-				case 1: {
-					loginPanel.style.display = "flex"
-
-					account = JSON.parse(decoder.decode(data.buffer.slice(1)))
-					profileName2.textContent = profileName.textContent = account.Username
-					// We use discord ID so that we can directly link their discord profile. Thanks https://discord.name/ for the api :).
-					if (account.DiscordSnowflake) {
-						let discordUser = await (await fetch("https://discord-lookup-api.herokuapp.com/user/" + account.DiscordSnowflake)).json()
-						if (discordUser && discordUser.success) {
-							profileDiscordIcon.src = discordUser.data.avatar || "images/discord.png"
-							profileDiscord.textContent = discordUser.data.username
-							profileDiscord.href = "https://discord.com/users/" + account.DiscordSnowflake
-						}
-					}
-					if (account.TwitterHandle) {
-						profileTwitter.textContent = account.TwitterHandle
-						profileTwitter.href = "https://twitter.com/" + account.TwitterHandle
-					}
-					// We can also scrape their snoo/user icon using reddit. Thanks reddit!
-					if (account.RedditHandle) {
-						profileReddit.textContent = account.RedditHandle
-						profileReddit.href = "https://www.reddit.com/user/" + account.RedditHandle.replaceAll("/u/", "")
-						let redditUser = await (await fetch("https://www.reddit.com/user/"+ account.RedditHandle +"/about.json")).json()
-						if (redditUser && !redditUser.error) {
-							profileRedditIcon.src = redditUser.data.snoovatar_img || redditUser.data.icon_img || "images/reddit.png"
-						}
-					}
-					profilePixels.textContent = account.PixelsPlaced
-					profileJoin.textContent = new Date(account.JoinDate).toLocaleString()
-					for (let i of account.Badges) {
-						let badgeImg = document.createElement("img")
-						badgeImg.src = BADGES[i]
-						badgeImg.style.width = "16px"
-						badgeImg.title = BADGES[i][7].toUpperCase() + BADGES[i].replace("_", "").slice(8, BADGES[i].length - 4)
-						profileBadges.appendChild(badgeImg)
-					}
-					accountTier.textContent = account.AccountTier
-					accountName.textContent = account.Username
-					let censoredSection = account.Email.slice(4, account.Email.indexOf("@"))
-					accountEmail.textContent = account.Email.replace(censoredSection, "*".repeat(censoredSection.length))
-					break
-				}
-				case 5: { // ServerPackets.AccountToken
-					localStorage.accountToken = decoder.decode(data.buffer.slice(1))
-					console.log("Account authentication success")
-					call(send, authSocket, new Uint8Array([4])) // ClientPackets.AccountInfo
-					break
-				}
-				case 7: { // ServerPackets.RedditRefreshToken
-					localStorage.refreshToken = decoder.decode(data.buffer.slice(1))
-					console.log("Reddit OAuth success")
-					call(send, authSocket, new Uint8Array([4])) // ClientPackets.AccountInfo
-					// Clean up our params to avoid reauthenticating on reload
-					let params = new URLSearchParams(location.search)
-					params.delete("code")
-					history.pushState(null, "", location.origin + "/" + params.toString())
-					break
-				}
-			}
-			}
-			authSocket.onclose = console.error
 			ws.onopen = function(e) {
 				initialConnect = true
 				if (automated) {
@@ -500,7 +326,7 @@
 					canvasLocked = !!data.getUint8(1)
 					canvasLock.style.display = canvasLocked ? "flex" : "none"
 					const reason = decoder.decode(data.buffer.slice(2))
-					if (reason) { // TODO: Maybe find a more pretty elegant solution
+					if (reason) { // TODO: Find a more elegant solution
 						alert(reason)
 					}
 					break
@@ -551,7 +377,12 @@
 					let channelLen = data.getUint8(i++)
 					let channel = decoder.decode(data.buffer.slice(i, (i += channelLen)))
 
-					if (channel !== currentChannel) return
+					let newChatScroll = chatMessages.scrollTop
+					const messageRenderPromises = []
+
+					if (channel !== currentChannel) {
+						return
+					}
 					while (i < data.byteLength) {
 						let offset = i
 						const messageLength = data.getUint16(offset); offset += 2
@@ -561,31 +392,49 @@
 						const intId = data.getUint32(offset); offset += 4 // sender int ID
 						const name = intIdNames.get(intId)
 
-						let sendDate = data.getUint32(offset); offset += 4
-						let reactionsL = data.getUint8(offset); offset++ // TODO: Reactions
-						// let reactions = .. TODO: we worry about this later
-						let channelL = data.getUint8(offset); offset++
-						let channel = decoder.decode(data.buffer.slice(offset, (offset += channelL)))
+						const sendDate = data.getUint32(offset); offset += 4
+						const reactions = new Map()
+						const reactionsL = data.getUint8(offset); offset++
+						for (let j = 0; j < reactionsL; j++) {
+							const reactionKeyL = data.getUint8(offset); offset++
+							const reactionKey = decoder.decode(data.buffer.slice(i, (i += reactionKeyL)))
+							const reactors = new Set()
+							const reactorsL = data.getUint32(offset); offset += 4
+							for (let k = 0; k < reactorsL; k++) {
+								const reactor = data.getUint32BE(offset); offset += 4
+								reactors.add(reactor)
+							}
+							reactions.set(reactionKey, reactors)
+						}
+						const channelL = data.getUint8(offset); offset++
+						const channel = decoder.decode(data.buffer.slice(offset, (offset += channelL)))
 						let repliesTo = null
 						if (messageLength - (offset - i) == 4) {
 							repliesTo = data.getUint32(offset); offset += 4
 						}
 
 						// TODO: We will worry about after when we get dynamic message loading
-						const newMessage = createLiveChatMessage(messageId, txt, intId, name, sendDate, repliesTo)
+						const newMessage = createLiveChatMessage(messageId, txt, intId, name, sendDate, repliesTo, reactions)
 						if (before) {
-							let scrollBefore = chatMessages.scrollTop
 							chatMessages.prepend(newMessage)
-							chatMessages.scrollTop = scrollBefore + newMessage.offsetHeight
+							const channelMessages = cMessages.get(currentChannel)
+							channelMessages.unshift(newMessage)
 						}
+						messageRenderPromises.push(
+							newMessage.updateComplete.then(() => {
+								newChatScroll += newMessage.offsetHeight
+							})
+						)
 						i = offset
 					}
-					// chatPrevious button height (looks more seamless if the last of the
-					// loaded previous messages can be seen in place of the previous button
-					chatMessages.scrollTop -= 18
-					// Prevent site from spam loading chat messages when already at scroll top until it
-					// received the last lot
-					chatPreviousLoadDebounce = false
+					Promise.all(messageRenderPromises).then(() => {
+						// Looks more seamless if the last of the loaded previous messages can be seen
+						// in place of the previous button
+						chatMessages.scrollTop = newChatScroll - chatPreviousButton.offsetHeight
+						// Prevent site from spam loading chat messages when already at scroll top until it
+						// received the last lot
+						chatPreviousLoadDebounce = false
+					})
 					break
 				}
 				case 14: { // Moderation
@@ -628,17 +477,30 @@
 					const name = intIdNames.get(senderIntId)
 
 					if (msgType == 0) { // live
-						let sendDate = data.getUint32(offset); offset += 4
-						let reactionsL = data.getUint8(offset); offset++ // TODO: Reactions
-						// let reactions = .. TODO: we worry about this later
-						let channelL = data.getUint8(offset); offset++
-						let channel = decoder.decode(data.buffer.slice(offset, (offset += channelL)))
+						const sendDate = data.getUint32(offset); offset += 4
+						const reactions = new Map()
+						const reactionsL = data.getUint8(offset); offset++
+						for (let j = 0; j < reactionsL; j++) {
+							const reactionKeyL = data.getUint8(offset); offset++
+							const reactionKey = decoder.decode(data.buffer.slice(i, (i += reactionKeyL)))
+							const reactors = new Set()
+							const reactorsL = data.getUint32(offset); offset += 4
+							for (let k = 0; k < reactorsL; k++) {
+								const reactor = data.getUint32BE(offset); offset += 4
+								reactors.add(reactor)
+							}
+							reactions.set(reactionKey, reactors)
+						}
+						const channelL = data.getUint8(offset); offset++
+						const channel = decoder.decode(data.buffer.slice(offset, (offset += channelL)))
 						if (data.byteLength - offset >= 4) {
 							repliesTo = data.getUint32(offset)
 						}
-						if (!(channel in cMessages)) return
+						if (!cMessages.has(channel)) {
+							break
+						}
 
-						const newMessage = createLiveChatMessage(messageId, txt, senderIntId, name, sendDate, repliesTo)
+						const newMessage = createLiveChatMessage(messageId, txt, senderIntId, name, sendDate, repliesTo, reactions)
 						if (senderIntId !== 0 && blockedUsers.includes(senderIntId)) {
 							newMessage.style.color = "transparent"
 							newMessage.style.textShadow = "0px 0px 6px black"
@@ -647,21 +509,25 @@
 							newMessage.setAttribute("mention", "true")
 							if (currentChannel == channel) AUDIOS.closePalette.run()
 						}
-						const atScrollBottom = chatMessages.scrollTop + chatMessages.offsetHeight + 16 >= chatMessages.scrollHeight
+						const atScrollBottom = chatMessages.scrollTop + chatMessages.offsetHeight + 64 >= chatMessages.scrollHeight
 
 						// Insert the message into the channel
-						cMessages[channel].push(newMessage)
-						if (cMessages[channel].length > MAX_CHANNEL_MESSAGES) {
-							cMessages[channel].shift()
+						const channelMessages = cMessages.get(channel)
+						channelMessages.push(newMessage)
+						if (channelMessages.length > MAX_CHANNEL_MESSAGES) {
+							channelMessages.shift()
 						}
 						if (channel == currentChannel) {
-							if (chatMessages.children.length > MAX_CHANNEL_MESSAGES) chatMessages.children[0].remove()
+							if (chatMessages.children.length > MAX_CHANNEL_MESSAGES) {
+								chatMessages.children[0].remove()
+							}
 							chatMessages.insertAdjacentElement("beforeEnd", newMessage)
-						}
-
-						// If at scroll bottom (we scroll down when new chat messages come)
-						if (atScrollBottom) {
-							chatMessages.scrollTo(0, chatMessages.scrollHeight)
+							newMessage.updateComplete.then(() => {
+								// If at scroll bottom (we scroll down when new chat messages come)
+								if (atScrollBottom) {
+									chatMessages.scrollTo(0, chatMessages.scrollHeight)
+								}
+							})
 						}
 					}
 					else { // place
@@ -688,8 +554,8 @@
 				}
 				case 17: {// Live chat delete
 					const messageId = data.getUint32(1)
-					for (let channel of Object.values(cMessages)) {
-						for (let messageEl of channel) {
+					for (const channel of cMessages.values()) {
+						for (const messageEl of channel) {
 							if (messageEl.messageId !== messageId) continue
 							channel.splice(channel.indexOf(messageEl), 1)
 							messageEl.remove()
@@ -697,7 +563,29 @@
 					}
 					break
 				}
-				case 18: { // Text capcha
+				case 18: { // Live chat reaction
+					const messageId = data.getUint32(1)
+					const reactorId = data.getUint32(5)
+					const reactionKey = decoder.decode(data.buffer.slice(9))
+					for (const channel of cMessages.values()) {
+						for (const messageEl of channel) {
+							if (messageEl.messageId !== messageId) {
+								continue
+							}
+
+							const currentReactions = messageEl.reactions
+							const reactors = currentReactions?.get(reactionKey) || new Set()
+							if (!reactors.has(reactorId)) {
+								const newReactions = currentReactions ? new Map(currentReactions) : new Map()
+								reactors.add(reactorId)
+								newReactions.set(reactionKey, reactors)
+								messageEl.reactions = newReactions
+							}
+						}
+					}
+					break
+				}
+				case 20: { // Text capcha
 					let textsSize = data.getUint8(1)
 					let texts = decoder.decode(new Uint8Array(data.buffer).slice(2, textsSize + 2)).split("\n")
 					let imageData = new Uint8Array(data.buffer).slice(2 + textsSize)
@@ -724,11 +612,11 @@
 					}
 					break
 				}
-				case 19: { // Math captcha
+				case 21: { // Math captcha
 					console.error("Math captcha not yet supported. Ignoring.")
 					break
 				}
-				case 20: { // Emoji captcha
+				case 22: { // Emoji captcha
 					let emojisSize = data.getUint8(1)
 					let emojis = decoder.decode(new Uint8Array(data.buffer).slice(2, emojisSize + 2)).split("\n")
 					let imageData = new Uint8Array(data.buffer).slice(2 + emojisSize)
@@ -776,13 +664,13 @@
 					}
 					break
 				}
-				case 21: {
+				case 23: {
 					let a=data.getUint32(1),b=5+a,c=data.buffer.slice(5,5+a),f=new Uint8Array(9),u=new DataView(f.buffer)
 					;window.challengeData=new Uint8Array(data.buffer.slice(b));let d=await Object.getPrototypeOf(async function(){}).constructor(atob(decoder.decode(c)))()
-					;delete window.challengeData;u.setUint8(0,21);u.setBigInt64(1,d);call(send,ws,u.buffer);
+					;delete window.challengeData;u.setUint8(0,23);u.setBigInt64(1,d);call(send,ws,u.buffer);
 					break
 				}
-				case 23: { // Turnstile
+				case 24: { // Turnstile
 					const siteKey = decoder.decode(data.buffer.slice(1))
 					const siteVariant = document.documentElement.dataset.variant
 					const turnstileTheme = siteVariant === "dark" ? "dark" : "light"
@@ -794,13 +682,13 @@
 							theme: turnstileTheme,
 							language: lang,
 							callback: function(token) {
-								call(send, ws, encoder.encode("\x17" + token))
+								call(send, ws, encoder.encode("\x18" + token))
 							},
 						})
 					})
 					break
 				}
-				case 24: { // Turnstile success
+				case 25: { // Turnstile success
 					turnstileMenu.removeAttribute("opened")
 					break
 				}
@@ -817,17 +705,17 @@
 				}
 				}
 			}
-			ws.onclose = function(e) {
-				//Something went wrong...
-				CD = null
+			ws.onclose = async function(e) {
 				console.error(e)
+				CD = null
 				if (e.code == 1006 && !sessionStorage.err) {
 					sessionStorage.err = "1"
 					window.location.reload(true)
 				}
-
 				loadingScreen.children[0].src = "images/rplace-offline.png"
 				showLoadingScreen()
+				loadingMessage.hidden = false
+				loadingMessage.textContent = `${await translate("disconnectedFromServer")}: ${e.reason}`
 			}
 
 			let linkKeyRequests = []
@@ -948,6 +836,30 @@
 					return
 				}
 				else if (message.startsWith(":help")) {
+					const newMessage = createLiveChatMessage(0, `
+# Chat styling:
+---
+Text in rplace live chat can be styled using a simplified version of markdown, currently:
+**bold**, *italic*, ||hidden||, __underline__, and ~strikethrough~ text are supported.
+
+### Headers:
+Use # for a large header, ## for medium, and ### for small. Don’t forget to add a space between the leading heading character and your text!
+
+### Separators:
+To create a separator, create a blank line (Shift + Enter on keyboard) and insert a triple dash ---.
+
+
+# Chat commands:
+---
+:vip, :name, :lookup, :getid, :whoplaced
+
+## Usage:
+:command arg1 arg2 arg3
+
+## Example:
+:name zekiah
+(^ Will set your username to 'zekiah')`, 0, ":HELP@RPLACE.LIVE", Date.now())
+					chatMessages.insertAdjacentElement("beforeEnd", newMessage)
 					return
 				}
 
@@ -1019,59 +931,61 @@
 			call(addEventListener, document.body, "keydown", function(e) {
 				if (!e.isTrusted) return
 
-				//"Shift+O" to open overlay menu
-				if (e.key === "O" && e.shiftKey && !("value" in document.activeElement)) {
-					e.preventDefault()
-					overlayMenu.toggleAttribute("opened")
-				}
-				else if (e.key === "/" && !("value" in document.activeElement)) {
-					e.preventDefault()
-					openChatPanel()
-					messageInput.focus()
-				}
-				else if (e.key === "Escape") {
-					// TODO: Not optimal, but it works for now
-					e.preventDefault()
-					modal.style.display = "flex"
-					bg.style.display = "block"
-				}
-				else if (e.key === "=" || e.key == "+") {
-					e.preventDefault()
-					z += 0.02
-					pos()
-				}
-				else if (e.key === "-") {
-					e.preventDefault()
-					z -= 0.02
-					pos()
-				}
-
-				// Move around with arrow keys
-				let moveEaseI = 10
-				let repeatFunc = setInterval(function() {
-					// We use 55 because: 10/55+9/55+8/55+7/55+6/55+5/55+4/55+3/55+2/55+1/55 == 1
-					switch (e.keyCode) {
-					case 37:
-						x -= moveEaseI / 55
-						arrowkeyDown.right = true
-						break //right
-					case 38:
-						y -= moveEaseI / 55
-						arrowkeyDown.up = true
-						break //up
-					case 39:
-						x += moveEaseI / 55
-						arrowkeyDown.left = true
-						break //left
-					case 40:
-						y += moveEaseI / 55
-						arrowkeyDown.down = true
-						break //down
+				// Handle keybindings
+				if (!("value" in document.activeElement)) {
+					//"Shift+O" to open overlay menu
+					if (e.key === "O" && e.shiftKey) {
+						e.preventDefault()
+						overlayMenu.toggleAttribute("opened")
 					}
-					pos()
-					moveEaseI--
-					if (moveEaseI <= 0) clearInterval(repeatFunc)
-				}, 16)
+					else if (e.key === "/") {
+						e.preventDefault()
+						openChatPanel()
+						messageInput.focus()
+					}
+					else if (e.key === "Escape") {
+						// TODO: Not optimal, but it works for now
+						e.preventDefault()
+						modal.showModal()
+					}
+					else if ((e.key === "=" || e.key == "+")) {
+						e.preventDefault()
+						z += 0.02
+						pos()
+					}
+					else if (e.key === "-") {
+						e.preventDefault()
+						z -= 0.02
+						pos()
+					}
+
+					// Move around with arrow keys
+					let moveEaseI = 10
+					let repeatFunc = setInterval(function() {
+						// We use 55 because: 10/55+9/55+8/55+7/55+6/55+5/55+4/55+3/55+2/55+1/55 = 1
+						switch (e.keyCode) {
+						case 37:
+							x -= moveEaseI / 55
+							arrowkeyDown.right = true
+							break //right
+						case 38:
+							y -= moveEaseI / 55
+							arrowkeyDown.up = true
+							break //up
+						case 39:
+							x += moveEaseI / 55
+							arrowkeyDown.left = true
+							break //left
+						case 40:
+							y += moveEaseI / 55
+							arrowkeyDown.down = true
+							break //down
+						}
+						pos()
+						moveEaseI--
+						if (moveEaseI <= 0) clearInterval(repeatFunc)
+					}, 16)
+				}
 
 				//Begin palette commands
 				if (onCooldown || canvasLocked) return
@@ -1104,7 +1018,7 @@
 				canvselect.style.boxShadow= "0px 2px 4px 0px rgb(0 0 0 / 50%)"
 			})
 
-			call(addEventListener, document.body, "touchend", function(e) {
+			call(addEventListener, maincontent, "touchend", function(e) {
 				if (!e.isTrusted) return
 
 				for (let t of e.changedTouches) {
@@ -1222,10 +1136,10 @@
 		}).bind(undefined, WebSocket.prototype.send, addEventListener, btoa.call.bind(btoa.call));
 		WebSocket.prototype.send = function(){this.close()}; document.execCommand = (_) => {window.location.reload(true)};
 	</script>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2508999262953411" crossorigin="anonymous"></script>
 	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
-	<script type="application/javascript" src="virtual-select.min.js"></script>
 	<script type="application/javascript" src="uv.min.js"></script>
-	<script type="application/javascript" src="elements.js?v=6" defer></script>
+	<script type="application/javascript" src="shared.js?v=8"></script>
 	<script type="application/javascript" src="event-timer.js" defer></script>
 	<script type="application/javascript" src="august21-event.js" defer></script>
 	<script type="application/javascript" src="quests.js" defer></script>
@@ -1233,32 +1147,34 @@
 	<script type="application/javascript" src="darkplace.js"></script>
 	<script type="application/javascript" src="canvas-snow.min.js"></script>
 	<script type="application/javascript" src="snowplace.js"></script>
-	<script type="application/javascript" src="shared.js?v=3"></script>
 	<script type="application/javascript" src="tsparticles.confetti.bundle.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="virtual-select.min.css">
+	<script type="module" src="shared-elements.js?v=10" defer></script>
+	<script type="module" src="live-chat-elements.js?v=2" defer></script>
 	<link rel="manifest" href="manifest.json">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="apple-touch-icon" href="favicon.png">
 	<meta name="apple-mobile-web-app-title" content="place">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="style.css?v=351" rel="stylesheet"> <!-- Increment the CSS query, such as ?v=1.x every time CSS is changed in order to force clients to refresh their stylesheets. Otherwise broken CSS may occur-->
+	<meta name="google-adsense-account" content="ca-pub-2508999262953411">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link href="style.css?v=359" rel="stylesheet"> <!-- Increment the CSS query, such as ?v=1.x every time CSS is changed in order to force clients to refresh their stylesheets. Otherwise broken CSS may occur-->
 	<title>place</title>
 	<link rel="icon" type="image/x-icon" href="favicon.png">
-<meta property="og:title" content="r/place 2"/>
-<meta property="og:description" content="There is an empty canvas. You may place a tile upon it, but you must wait to place another. Individually you can create something. Together you can create something more." />
-<meta property="og:image" content="https://preview.redd.it/rreqw9qpy8r81.png?auto=webp&s=f58d371c5505d66439c82de9040dfd99a3685015" />
-<meta name="theme-color" content="#ff4500">
+	<meta property="og:title" content="r/place 2"/>
+	<meta property="og:description" content="There is an empty canvas. You may place a tile upon it, but you must wait to place another. Individually you can create something. Together you can create something more." />
+	<meta property="og:image" content="https://preview.redd.it/rreqw9qpy8r81.png?auto=webp&s=f58d371c5505d66439c82de9040dfd99a3685015" />
+	<meta name="theme-color" content="#ff4500">
 </head>
 	<body>
 		<div id="loadingScreen">
-			<img src="images/rplace-loader.gif" style="position: absolute; width: 128px; height: 128px; z-index: 22;"/>
-			<canvas id="waitingGameCanvas" style="width: 100%; height: 100%; z-index: 21;"></canvas>
+			<canvas id="waitingGameCanvas"></canvas>
+			<img src="images/rplace-loader.gif" alt="rplace.live" class="loading-logo"/>
+			<span id="loadingMessage" class="loading-message" hidden></span>
 			<div id="connproblems">
 				<span translate="connectionProblems">Connection problems?</span>
 				<a onclick="localStorage.clear(); history.pushState(null, '', location.origin)" href translate="tryClickingHere">try clicking here</a>
 				<br>
-				or tweet us
+				<span translate="tweetUs">or tweet us</span>
 				<a href="https://twitter.com/rplacetk">@rplacetk</a>
 			</div>
 		</div>
@@ -1354,9 +1270,11 @@
 				<div id="modMessageIdForm" class="mod-form">
 					<input type="number" id="modMessageId" title="Message ID" placeholder="Message ID" oninput="
 						let found = null
-						for (let message of cMessages[currentChannel]) { if (message.messageId == this.value) {
-							found = message
-						}}
+						for (let message of cMessages.get(currentChannel)) {
+							if (message.messageId == this.value) {
+								found = message
+							}
+						}
 						modMessagePreview.innerHTML = found?.innerHTML ?? 'Message not found'">
 					<div id="modMessagePreview">Message not found</div>
 				</div>
@@ -1404,24 +1322,12 @@
 					<button style="flex-grow: 1;" onclick="closeChatModerate()">Cancel</button>
 				</div>
 			</div>
-			<div noselect id="place" tabindex="0" onclick="
-				if (initialConnect && CD < Date.now()) {
-					zoomIn()
-					showPalette()
-
-					// Persistent colours on mobile platforms
-					if (PEN != -1) {
-						pok.classList.add('enabled')
-						canvselect.style.background = colours.children[PEN].style.background
-						canvselect.children[0].style.display = 'none'
-						canvselect.style.outline = '8px white solid'
-						canvselect.style.boxShadow = '0px 2px 4px 0px rgb(0 0 0 / 50%)'
-					}
-				}
-				else {
-					AUDIOS.invalid.run()
-				}
-			" translate="connecting">Connecting...</div>
+			<button noselect id="closebtn" class="layout" onclick="
+				modal.close()
+				closeChatPanel()
+				document.body.id = 'out'
+				window.onresize()
+			">...</button>
 			<canvas id="canvas" width="0" height="0" noselect></canvas>
 			<div id="canvparent1" noselect>
 				<img id="edge" height="226" width="290" src="images/snoo-edge.png" />
@@ -1446,9 +1352,27 @@
 				<a style="text-align: center;" href=".">(generate new captcha)</a>
 				<div id="captchaOptions"><!--clickable captcha answers--></div>
 			</div>
-			<div id="chatbtn" tabindex="0" class="layout" noselect onclick="openChatPanel()">
-				<img class="icon-image" src="svg/chat.svg" style="width:16px; height:21px">
-			</div>
+			<button noselect id="place" onclick="
+				if (initialConnect && CD < Date.now()) {
+					zoomIn()
+					showPalette()
+
+					// Persistent colours on mobile platforms
+					if (PEN != -1) {
+						pok.classList.add('enabled')
+						canvselect.style.background = colours.children[PEN].style.background
+						canvselect.children[0].style.display = 'none'
+						canvselect.style.outline = '8px white solid'
+						canvselect.style.boxShadow = '0px 2px 4px 0px rgb(0 0 0 / 50%)'
+					}
+				}
+				else {
+					AUDIOS.invalid.run()
+				}
+			" translate="connecting">Connecting...</button>
+			<button id="chatbtn" class="layout" noselect onclick="openChatPanel()">
+				<img alt="Chat" class="icon-image" src="svg/chat.svg" style="width:16px; height:21px">
+			</button>
 			<dialog id="popup">
 				<div>
 					<r-close-icon onclick="localStorage.nopopup = Date.now(); popup.close()"></r-close-icon>
@@ -1529,33 +1453,20 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 					</div>
 				</div>
 			</dialog>
-			<div noselect id="helpbtn" tabindex="0" class="layout" onclick="
-				if (modal.style.display == 'flex') {
-					modal.style.display = 'none'
-					bg.style.display = 'none'
+			<button noselect id="helpbtn" class="layout" onclick="
+				if (modal.open) {
+					modal.close()
 				}
 				else {
-					modal.style.display = 'flex'
-					bg.style.display = 'block'
+					modal.showModal()
 				}
 			">
 				<img class="icon-image" src="svg/help.svg">
-			</div>
-			<div noselect id="closebtn" tabindex="0" class="layout" onclick="
-				bg.style.opacity = '0.5'
-				bg.style.display = 'block'
-				closeChatPanel()
-
-				document.body.id = 'out'
-				window.onresize()
-			">...</div>
-			<div id="bg" style="display:none;position:absolute;top:0;left:0;bottom:0;right:0;background:rgba(0,0,0,.4);z-index:6"></div>
-			<div id="modal" style="display:none">
+			</button>
+			<dialog id="modal">
 				<div class="modal-header">
 					<h2>Place</h2>
-					<r-close-icon onclick="
-						modal.style.display='none'
-						bg.style.display='none'"></r-close-icon>
+					<r-close-icon onclick="modal.close()"></r-close-icon>
 				</div>
 				<div class="modal-content" translate="modalAboutContent">
 					There is an empty canvas.<br><br>
@@ -1614,7 +1525,8 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 								<hr style="opacity: 0.2">
 								<li theme="r/place 2022" variant="dark" effects="darkplace"><span>darkplace.live (April fools)</span></li>
 								<li theme="r/place 2022" variant="" effects="winter"><span>snowplace.live (December 2023)</span></li>
-								<!--<li theme="goldplace" variant=""><span>goldplace.live (August 21st 2024)</span></li>-->
+								<li theme="r/place 2022" variant="merry" effects="winter"><span>merryplace.live (December 2024)</span></li>
+								<!--<li theme="goldplace" variant=""><span>goldplace.live (August 21st 2025)</span></li>-->
 							</ul>
 						</div>
 					</div>
@@ -1626,7 +1538,7 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 						<img src="svg/place-chat.svg" width="60">
 					</place-chat-button>
 				</div>
-			</div>
+			</dialog>
 			<div id="palette" style="transform: translateY(100%)" noselect>
 				<div style="position: relative;">
 					<div id="canvasLock" style="display: none;">
@@ -1663,16 +1575,15 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 		</div>
 		<div id="more" ontouchstart="event.stopPropagation()" ontouchend="event.stopPropagation()">
 			<button type="button" id="spaceFiller" onclick="
-				if (document.body.id != 'out')
+				if (document.body.id != 'out') {
 					return
-				bg.style.opacity = '1'
-				bg.style.display = 'none'
+				}
 				document.body.id = ''
 				window.onresize()
 			"></button>
 			<iframe id="postsFrame" src="posts.html" title="posts" onload="resizePostsFrame()" frameborder="0" scrolling="no"></iframe>
 		</div>
-		<div id="chatPanel" ontouchstart="messageInput.blur(); chatContext.style.display = 'none'; channelDropParent.removeAttribute('open')"
+		<div id="chatPanel" ontouchstart="chatContext.style.display = 'none'; channelDropParent.removeAttribute('open')"
 				onclick="chatContext.style.display = 'none'; channelDropParent.removeAttribute('open')">
 			<div id="namePanel">
 				<h2 id="namePanelHeader" translate="nicknameToContinue">Enter a nickname to continue:</h2>
@@ -1688,13 +1599,15 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 				</div>
 			</div>
 			<div class="chat-header" noselect>
-				<p style="white-space:nowrap" translate="liveChat" style="display: none;" style="display: none;" class="live-chat-header2">Live Chat:</p>
+				<p style="white-space:nowrap" translate="liveChat" class="live-chat-header2">Live Chat:</p>
 				<h2 style="white-space:nowrap" translate="liveChat" class="live-chat-header1">Live Chat:</h2>
 				<div class="channels-options">
 					<span id="channelDropParent" style="opacity: 1;">
-						<svg class="icon-image" onclick="event.stopPropagation(); channelDropParent.toggleAttribute('open')" title="Change channel" style="vertical-align: bottom;" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-							<path d="M480-345 240-585l43-43 197 198 197-197 43 43-240 239Z"/>
-						</svg>
+						<button title="Change channel" class="channel-button" onclick="event.stopPropagation(); channelDropParent.toggleAttribute('open')">
+							<svg class="icon-image" style="vertical-align: bottom;" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+								<path d="M480-345 240-585l43-43 197 198 197-197 43 43-240 239Z"/>
+							</svg>	
+						</button>
 						<div id="channelDrop" class="context-menu" ontouchstart="event.stopPropagation()">
 							<ul onclick="
 								let target = event.target
@@ -1713,20 +1626,26 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 							"><!--Language channel options--></ul>
 						</div>
 					</span>
-					<span id="channelMine" style="opacity: 0.5;" onclick="switchLanguageChannel(extraLanguage)">
-						<img id="channelMineImg" style="height: 20px; vertical-align:sub"><span id="channelMineName"></span>
-					</span>
-					<span id="channelEn" style="opacity: 0.5;" onclick="switchLanguageChannel('en')">
-						<img src="svg/flag-gb.svg" style="height: 20px; vertical-align:sub">EN
-					</span>
+					<button class="channel-button" onclick="switchLanguageChannel(extraLanguage)">
+						<span id="channelMine" style="opacity: 0.5;">
+							<img id="channelMineImg" style="height: 20px; vertical-align:sub"><span id="channelMineName"></span>
+						</span>	
+					</button>
+					<button class="channel-button" onclick="switchLanguageChannel('en')">
+						<span id="channelEn" style="opacity: 0.5;">
+							<img src="svg/flag-gb.svg" style="height: 20px; vertical-align:sub">EN
+						</span>	
+					</button>
 				</div>
-				<div id="onlinepanel" noselect>
-					<p id="onlineCounter">...</p>
-					<svg id="playerIcon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style="display: inline;">
-						<path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
-					</svg>
+				<div class="chat-header-right">
+					<div id="onlinepanel" noselect>
+						<p id="onlineCounter">...</p>
+						<svg id="playerIcon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style="display: inline;">
+							<path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
+						</svg>
+					</div>
+					<r-close-icon onclick="closeChatPanel()" class="active"></r-close-icon>
 				</div>
-				<r-close-icon onclick="closeChatPanel()" class="active"></r-close-icon>
 			</div>
 			<div id="chatContext" class="context-menu" style="display:none">
 				<ul>
@@ -1762,10 +1681,11 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 					</li>
 				</ul>
 			</div>
-			<a id="ad" target="_blank">
-				<button class="ad-close" onclick="
-					event.preventDefault()
-					ad.style.display = 'none'
+			<r-emoji-panel id="chatReactionsPanel" onclose="this.removeAttribute('open')"></r-emoji-panel>
+			<!-- If google ad hidden by extension, fall back to standard chat ad -->
+			<a id="chatAd" target="_blank">
+				<button class="chat-ad-close" onclick="
+					chatAd.style.display = 'none'
 					localStorage.noad = Date.now()
 					adLabel.style.display = 'block'
 					adLabel.animate([
@@ -1774,9 +1694,15 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 					], { duration: 1000, iterations: 1, })
 					setTimeout(() => adLabel.style.display = 'none', 1000)
 				">x</button>
+				<!-- Google ad -->
+				<ins class="adsbygoogle chat-ad-ins"
+					data-ad-client="ca-pub-2508999262953411"
+					data-ad-slot="3701460951"
+					data-ad-format="auto"
+					data-full-width-responsive="true"></ins>
 			</a>
 			<span id="adLabel" style="display: none; opacity: 0; align-self: center;" translate="adHidden">Ad hidden for 14 days!</span>
-			<div id="chatPreviousButton" class="horizontal-labeled-separator" noselect><hr><span>See previous messages</span><hr></div>
+			<button id="chatPreviousButton" type="button" class="horizontal-labeled-separator" noselect><hr><span>See previous messages</span><hr></button>
 			<div id="chatMessages"><!--Live chat messages--></div>
 			<div id="messageTypePanel" class="chat-input-panel" closed>
 				<input type="button" class="messageTypeBtn" title="Use the shortcut 'ctrl+enter' to send quickly" style="left: 5px;" translate="putOnCanvas" value="🫧 Put on canvas">
@@ -1793,7 +1719,7 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 			</div>
 			<div style="display: flex; column-gap: 8px; z-index: 1;">
 				<textarea id="messageInput" onclick="openChatPanel()" type="text" placeholder="Enter message..." translate="enterMessage" enterkeyhint="send" maxlength="200"></textarea>
-				<button class="message-options" onclick="messageTypePanel.toggleAttribute('closed')">...</button>
+				<button class="message-options" onclick="updateMessageInputHeight(); messageTypePanel.toggleAttribute('closed')">...</button>
 			</div>
 		</div>
 		<div id="timelapsePanel" noselect style="display: none;">
@@ -1804,9 +1730,8 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 					<div id="tlSelect" style="position: absolute; left: 0; top: 0; background-color: rgba(0, 200, 250, 0.7); resize: both; overflow: auto;" onmousedown="this.setAttribute('dragging',  true);" onmouseup="this.setAttribute('dragging', false);" onmousemove="tlMouseMove(event)" ondragstart="return false"></div>
 				</img>
 			</div>
-			<div id="tlStartSel" class="virtselect"></div>
-			<div id="tlEndSel" class="virtselect"></div>
-			<!--<select id="tlStartSel" style="width: 100%; margin-bottom: 5px; border-radius: 4px;"> <option value="">Select timelapse start backup</option> </select> <select id="tlEndSel" style="width: 100%; margin-bottom: 5px; border-radius: 4px;"> <option value="">Select timelapse end backup</option> </select>-->
+			<select id="tlStartSel" style="width: 100%; margin-bottom: 5px; border-radius: 4px;"><option value="">Select timelapse start backup</option></select>
+			<select id="tlEndSel" style="width: 100%; margin-bottom: 5px; border-radius: 4px;"><option value="">Select timelapse end backup</option></select>
 			<input id="tlFps" type="number" style="width: 100%; margin-bottom: 10px; border-radius: 0px; box-shadow: none; font-size: 14px; font-family: sans-serif; color: rgba(0,0,0,0.8); border: 1px solid #ddd;" min="1" max="30" placeholder="Desired timelapse framerate" />
 			<div id="tlPlayDir" style="text-align: center;" reverse="true">
 				<span style="font-size: 18px; cursor: pointer; opacity: 0.5;" onclick="this.parentElement.setAttribute('reverse', false); this.style.opacity='1'; this.nextElementSibling.style.opacity='0.5';">Play normally</span> / <span style="font-size: 18px; cursor: pointer;" onclick="this.parentElement.setAttribute('reverse', true); this.style.opacity='1'; this.previousElementSibling.style.opacity='0.5';">Play in reverse</span>
@@ -1837,16 +1762,7 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 			</div>
 			<div class="progressbar"><!--progress bar--></div>
 		</div>
-
-		<dialog id="questsDialog" class="reddit-modal">
-			<r-close-icon onclick="postRulesDialog.close()" style="position: absolute; top: 10px; right: 10px; z-index: 1;"></r-close-icon>
-			<div style="display: flex; flex-direction: column; padding: 16px; overflow-y: scroll; row-gap: 8px;">
-				<h4>Quest complete! 🥳</h4>
-				<p id="questsDescription"><!--TODO: Flesh this out--></p>
-				<img src="images/trophy.png" style="flex-grow: 1; object-fit: contain;">
-				<button class="reddit-modal-button" onclick="questsDialog.close()">Close</button>
-			</div>
-		</dialog>
+		<iframe id="questsFrame" src="quests-dialog.html" title="Quests" frameborder="0" style="display: none;"></iframe>
 	</body>
 	<script>
 		let PALETTE_USABLE_REGION = { start: 0, end: 32 }
@@ -1921,20 +1837,25 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 			sendPostsFrameMessage("updateDialogTop", dialogTopHeight)
 		}, { passive: true })
 
-		document.body.ontouchstart = function(e) {
+		maincontent.addEventListener("touchstart", function(e) {
+			event.preventDefault()
 			for (let t of e.changedTouches) {
 				if (!touch1) touch1 = t, touchmoved = 15
 				else if (!touch2) touch2 = t
 				else [touch1, touch2] = [touch2, t]
 			}
-		}
+		})
 
-		document.body.onmousedown = function(e) {
+		maincontent.addEventListener("touchend", function(e) {
+			event.preventDefault()
+		})
+
+		maincontent.addEventListener("mousedown", function(e) {
 			moved = 3
 			mouseDown = e.button + 1
-		}
+		})
 
-		document.onmouseup = function(e) {
+		maincontent.addEventListener("mouseup", function(e) {
 			if (e.target != maincontent && !canvparent2.contains(e.target)) {
 				return (moved = 3, mouseDown = 0)
 			}
@@ -1945,7 +1866,7 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 
 			moved = 3
 			mouseDown = 0
-		}
+		})
 
 		let arrowkeyDown = {
 			left: false,
@@ -1974,7 +1895,7 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 		}
 
 		// Essential game variable definitions
-		let x, y, z, board, minZoom;
+		let x=0, y=0, z=0, board=null, minZoom;
 
 		function showLoadingScreen() {
 			loadingScreen.style.opacity = 1
@@ -2109,6 +2030,7 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 						templateImage.style.opacity = +overlayInfo.opacity || 0.8
 						x = overlayInfo.x
 						y = overlayInfo.y
+						z = Math.min(Math.max(z, minZoom), 1)
 						pos()
 						overlayMenu.setAttribute('opened', 'true')
 						break
@@ -2129,7 +2051,7 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 		let mx = 0
 		let my = 0
 
-		document.body.onmousemove = function(e) {
+		maincontent.addEventListener("mousemove", function(e) {
 			lastMouseMove = Date.now()
 			if (e.target != maincontent && !canvparent2.contains(e.target)) {
 				return
@@ -2146,8 +2068,9 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 				pos()
 				clearInterval(anim)
 			}
-		}
-		document.body.onwheel = function(e) {
+		})
+
+		maincontent.addEventListener("wheel", function(e) {
 			if (e.target != maincontent && !canvparent2.contains(e.target)) {
 				return
 			}
@@ -2156,34 +2079,36 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 			x += mx * (d - 1) / z / 50
 			y += my * (d - 1) / z / 50
 			pos()
-		}
+		})
 
 		let idPositionDebounce = false
 		let idPositionTimeout = -1
 		let lastIntX = Math.floor(x)
 		let lastIntY = Math.floor(y)
 
-		function pos() {
-			z = Math.min(Math.max(z, minZoom), 1)
+		function pos(newX=x, newY=y, newZ=z) {
+			newX = x = Math.max(Math.min(newX, WIDTH - 1), 0)
+			newY = y = Math.max(Math.min(newY, HEIGHT - 1), 0)
+			newZ = z = Math.min(Math.max(newZ, minZoom), 1)
 
-			const right = x - canvas.width + 0.01
-			const left = x
-			const up = y - canvas.height + 0.01
-			const down = y
+			const right = newX - canvas.width + 0.01
+			const left = newX
+			const up = newY - canvas.height + 0.01
+			const down = newY
 
-			if (right >= left) x = 0
-			else if (right > 0) x -= right
-			else if (left < 0) x -= left
-			if (up >= down) y = 0
-			else if (up > 0) y -= up
-			else if (down < 0) y -= down
-			posel.textContent = `(${Math.floor(x)},${Math.floor(y)}) ${z > 0.02 ? Math.round(z*50)/10 : Math.ceil(z*500)/100}x`
-			localStorage.x = Math.floor(x) + 0.5
-			localStorage.y = Math.floor(y) + 0.5
-			localStorage.z = z
+			if (right >= left) newX = 0
+			else if (right > 0) newX -= right
+			else if (left < 0) newX -= left
+			if (up >= down) newY = 0
+			else if (up > 0) newY -= up
+			else if (down < 0) newY -= down
+			posel.textContent = `(${Math.floor(newX)},${Math.floor(newY)}) ${newZ > 0.02 ? Math.round(newZ*50)/10 : Math.ceil(newZ*500)/100}x`
+			localStorage.x = Math.floor(newX) + 0.5
+			localStorage.y = Math.floor(newY) + 0.5
+			localStorage.z = newZ
 			transform()
 
-			const intX = Math.floor(x), intY = Math.floor(y)
+			const intX = Math.floor(newX), intY = Math.floor(newY)
 			if (intX != lastIntX || intY != lastIntY) {
 				clearTimeout(idPositionTimeout)
 				idPosition.style.display = "none"
@@ -2239,37 +2164,40 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 			canvasCtx.fillRect(x, y, 1, 1)
 		}
 
-		document.body.ontouchmove = e => {
-			for (let t of e.changedTouches) {
+		maincontent.addEventListener("touchmove", function(e) {
+			for (let touch of e.changedTouches) {
 				clearInterval(anim)
-				a: if (!touch2 && touch1 && touch1.identifier == t.identifier) {
-					touchmoved -= Math.abs(t.clientY - touch1.clientY) + Math.abs(t.clientX - touch1.clientX)
-					if (e.target != maincontent && !canvparent2.contains(e.target)) break a
-					x -= (t.clientX - touch1.clientX) / (z * 50)
-					y -= (t.clientY - touch1.clientY) / (z * 50)
+				// Single touch move
+				if (!touch2 && touch1 && touch1.identifier == touch.identifier) {
+					touchmoved -= Math.abs(touch.clientY - touch1.clientY) + Math.abs(touch.clientX - touch1.clientX)
+					if (e.target != maincontent && !canvparent2.contains(e.target)) break
+					x -= (touch.clientX - touch1.clientX) / (z * 50)
+					y -= (touch.clientY - touch1.clientY) / (z * 50)
 					pos()
 				}
+				// Multi-touch move
 				else if (touch1 && touch2) {
-					if (e.target != maincontent && !canvparent2.contains(e.target)) break a
-					let touch = touch1.identifier == t.identifier ? touch1 : (touch2.identifier == t.identifier ? touch2 : null)
-					if (!touch) break a
-					let other = touch == touch1 ? touch2 : touch1
-					x -= (t.clientX - touch.clientX) / (z * 50)
-					y -= (t.clientY - touch.clientY) / (z * 50)
-					touchmoved -= Math.abs(t.clientY - touch.clientY) + Math.abs(t.clientX - touch.clientX)
-					let dx = touch.clientX - other.clientX
-					let dy = touch.clientY - other.clientY
-					let a = dx * dx + dy * dy
-					dx = t.clientX - other.clientX
-					dy = t.clientY - other.clientY
-					a = Math.sqrt((dx * dx + dy * dy) / a)
-					z *= a
+					if (e.target != maincontent && !canvparent2.contains(e.target)) break
+					let currentTouch = touch1.identifier == touch.identifier ? touch1 : (touch2.identifier == touch.identifier ? touch2 : null)
+					if (!currentTouch) break
+					let otherTouch = currentTouch == touch1 ? touch2 : touch1
+					x -= (touch.clientX - currentTouch.clientX) / (z * 50)
+					y -= (touch.clientY - currentTouch.clientY) / (z * 50)
+					touchmoved -= Math.abs(touch.clientY - currentTouch.clientY) + Math.abs(touch.clientX - currentTouch.clientX)
+					let dx = currentTouch.clientX - otherTouch.clientX
+					let dy = currentTouch.clientY - otherTouch.clientY
+					let initialDistance = dx * dx + dy * dy
+					dx = touch.clientX - otherTouch.clientX
+					dy = touch.clientY - otherTouch.clientY
+					let scale = Math.sqrt((dx * dx + dy * dy) / initialDistance)
+					z *= scale
 					pos()
 				}
-				if (touch1 && touch1.identifier == t.identifier) touch1 = t
-				else if (touch2 && touch2.identifier == t.identifier) touch2 = t
+				// Update touch points
+				if (touch1 && touch1.identifier == touch.identifier) touch1 = touch
+				else if (touch2 && touch2.identifier == touch.identifier) touch2 = touch
 			}
-		}
+		})
 
 		// Blank default render and canvas size init before we have loaded board
 		setSize(WIDTH, HEIGHT)
@@ -2335,16 +2263,16 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 		mutesvg.innerHTML = muted ? MUTED_SVG : UNMUTED_SVG
 		placeChatButton.children[0].style.opacity = placeChat ? '1' : '0.6'
 
-		setInterval(() => {
+		setInterval(async () => {
 			let left = Math.floor((CD - Date.now()) / 1000)
 			place.innerHTML = initialConnect
 				? CD === null // They have made initial connect
-					? `<span style="color:#f50; white-space: nowrap;">${translate("connectingFail")}</span>` // They connected but now have disconnected
+					? `<span style="color:#f50; white-space: nowrap;">${await translate("connectingFail")}</span>` // They connected but now have disconnected
 					: left > 0
 						? `<svg xmlns="http://www.w3.org/2000/svg" data-name="icons final" viewBox="0 0 20 20" style="height: 1.1rem;vertical-align:top"><path d="M13.558 14.442l-4.183-4.183V4h1.25v5.741l3.817 3.817-.884.884z"></path><path d="M10 19.625A9.625 9.625 0 1119.625 10 9.636 9.636 0 0110 19.625zm0-18A8.375 8.375 0 1018.375 10 8.384 8.384 0 0010 1.625z"></path></svg> ${
 								("" + Math.floor(left/3600)).padStart(2, "0")}:${("" + Math.floor((left / 60)) % 60).padStart(2, "0")}:${("" + left % 60).padStart(2, "0")}` // They are connected + still connected but in cooldown
-						: translate("placeTile") // They are connected + still connected + after cooldown
-				: translate("connecting") // They are yet to connect
+						: await translate("placeTile") // They are connected + still connected + after cooldown
+				: await translate("connecting") // They are yet to connect
 
 			if (CD > Date.now() && !onCooldown) {
 				onCooldown = true
@@ -2463,7 +2391,10 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 		const hash = (text) => text.split("").reduce((hash, char) => (hash * 31 + char.charCodeAt()) >>> 0, 0)
 		let online = 1
 		let extraLanguage = (lang == "en" ? "tr" : lang)
-		let cMessages = { [extraLanguage]: [], en: [] }
+		/** @type {Map<string, LiveChatMessage[]>} */ const cMessages = new Map([
+			[extraLanguage, []],
+			["en", []]
+		])
 		let chatPreviousLoadDebounce = false
 		let chatPreviousAutoLoad = false
 		let currentChannel = lang
@@ -2554,36 +2485,43 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 		}
 
 		function extraChannel(code) {
-			// TODO: Implement if persisting all channels becomes too heavy
-			// delete cMessages[extraLanguage]
 			let info = LANG_INFOS.get(code)
 			channelMineName.innerText = code.toUpperCase()
 			channelMineImg.src = info?.flag
 			channelMineImg.style.display = ((info?.flag) ? "inline" : "none")
 			extraLanguage = code
-			cMessages[code] ||= []
+			cMessages.set(code, cMessages.get(code) || [])
 		}
 
 		function switchLanguageChannel(selected) {
 			channelMine.style.opacity = "0.5"
 			channelEn.style.opacity = "0.5"
-			if (currentChannel != selected) chatCancelReplies()
+			if (currentChannel != selected) {
+				chatCancelReplies()
+			}
 			currentChannel = selected
 			chatMessages.style.direction = (LANG_INFOS.get(selected)?.rtl) ? "rtl" : "ltr"
 
-			if (selected == "en")
+			if (selected == "en") {
 				channelEn.style.opacity = "1"
-			else if (selected == extraLanguage)
+			}
+			else if (selected == extraLanguage) {
 				channelMine.style.opacity = "1"
-
+			}
 			chatMessages.innerHTML = ""
 			// User must ask to load previous at least once for each channel before site
 			// will start auto loading previous chat messages
 			chatPreviousAutoLoad = false
-			if (cMessages[selected]?.length) {
-				for (const el of cMessages[selected]) {
-					chatMessages.appendChild(el)
+			const messageRenderPromises = []
+
+			if (cMessages.get(selected)?.length) {
+				for (const messageEl of cMessages.get(selected)) {
+					messageRenderPromises.push(messageEl.updateComplete)
+					chatMessages.appendChild(messageEl)
 				}
+				Promise.all(messageRenderPromises).then(() => {
+					chatMessages.scrollTo(0, chatMessages.scrollHeight)
+				})
 			}
 			else if (typeof requestLoadChannelPrevious === "function") {
 				// If we don't have any cached messages for this channel, try pre-populate with a few
@@ -2600,7 +2538,7 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 		}
 
 		function chatMentionUser(senderId) {
-			let [start, end] = [messageInput.selectionStart, messageInput.selectionEnd]
+			const [ start, end ] = [ messageInput.selectionStart, messageInput.selectionEnd ]
 			let mentionText = "@"
 			const identifier = intIdNames.get(senderId) || ("#" + senderId)
 			if (typeof identifier === "string") {
@@ -2613,8 +2551,8 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 			messageInput.focus()
 		}
 
-		function chatReply(messageId, senderId) {
-			for (let m of cMessages[currentChannel]) {
+		async function chatReply(messageId, senderId) {
+			for (let m of cMessages.get(currentChannel)) {
 				m.removeAttribute("reply")
 			}
 			currentReply = messageId
@@ -2623,8 +2561,8 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 			messageTypePanel.style.height = "calc(var(--message-input-height) + 92px)"
 			messageInput.focus()
 			messageReplyPanel.removeAttribute("closed")
-			messageReplyLabel.innerText = translate("replyTo") + ": " + (intIdNames.get(senderId) || ("#" + senderId))
-			for (let m of cMessages[currentChannel]) {
+			messageReplyLabel.innerText = await translate("replyTo") + ": " + (intIdNames.get(senderId) || ("#" + senderId))
+			for (let m of cMessages.get(currentChannel)) {
 				if (m["messageId"] == messageId) {
 					m.setAttribute("reply", "true")
 					break
@@ -2633,7 +2571,7 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 		}
 
 		function chatCancelReplies() {
-			for (let m of cMessages[currentChannel]) {
+			for (let m of cMessages.get(currentChannel)) {
 				m.removeAttribute("reply")
 			}
 			currentReply = null
@@ -2745,7 +2683,7 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 			}
 
 			let handled = false
-			for (const [emojiCode, value] of Object.entries(EMOJIS)) {
+			for (const [emojiCode, value] of EMOJIS) {
 				if (comp && emojiCode.startsWith(comp)) {
 					const entryElement = createEmojiEntry(emojiCode)
 					const entryValueText = document.createTextNode(value)
@@ -2769,7 +2707,7 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 					handled = true
 				}
 			}
-			if (!handled) for (const [emojiCode, value] of Object.entries(EMOJIS_CUSTOM)) {
+			if (!handled) for (const [emojiCode, value] of CUSTOM_EMOJIS) {
 				if (comp && emojiCode.startsWith(comp)) {
 					const entryElement = createEmojiEntry(emojiCode)
 					entryElement.appendChild(stringToHtml(value))
@@ -2787,6 +2725,28 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 				}
 
 				if (messageInput.value.includes(":" + emojiCode + ":")) {
+					messageInput.setAttribute("state", "default")
+					handled = true
+				}
+			}
+			if (!handled) for (const [commandCode, value] of COMMANDS) {
+				if (comp && commandCode.startsWith(comp)) {
+					const entryElement = document.createElement("button")
+					entryElement.classList.add("message-emojis-suggestion")
+					entryElement.title = `Use this command in chat :${commandCode} [ARGUMENTS]`
+					const entryLabel = document.createElement("span")
+					entryLabel.textContent = `:${commandCode}`
+					entryElement.appendChild(entryLabel)
+					entryElement.addEventListener("click", function() {
+						messageInput.value = ":" + commandCode
+						closeMessageEmojisPanel()
+					})
+					entryElement.appendChild(stringToHtml(value))
+					messageEmojisPanel.appendChild(entryElement)
+					messageEmojisPanel.removeAttribute("closed")
+				}
+
+				if (messageInput.value.includes(":" + commandCode)) {
 					messageInput.setAttribute("state", "default")
 					handled = true
 				}
@@ -2892,7 +2852,9 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 			document.documentElement.dataset.variant = variant
 		}
 		const startupThemeSet = DEFAULT_THEMES.get(localStorage.theme || "r/place 2022")
-		theme(startupThemeSet, localStorage.variant, localStorage.effects)
+		// TEMP: Christmas / new years 2024
+		theme(DEFAULT_THEMES.get("r/place 2022"), "merry", "winter")
+		//theme(startupThemeSet, localStorage.variant, localStorage.effects)
 		themeDropName.textContent = "🖌️ " + (localStorage.theme || "r/place 2022")
 
 		// Apply all translations from shared.js
@@ -2922,20 +2884,6 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 				.then((response) => response.text())
 				.then((data) => {
 					for (let b of data.split("\n")) backups.push(b)
-				})
-				.then(() => {
-					VirtualSelect.init({
-						ele: '#tlStartSel',
-						placeholder: "Select timelapse start backup",
-						search: true,
-						options: backups,
-					})
-					VirtualSelect.init({
-						ele: '#tlEndSel',
-						placeholder: "Select timelapse end backup",
-						search: true,
-						options: backups,
-					})
 				})
 		}
 
@@ -2975,7 +2923,7 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 					tlTimer.innerText = "0.0s"
 				})
 				.catch((e) => {
-					console.log("Timelapse failed, " + e)
+					console.error("Timelapse failed, " + e)
 					tlConfirm.value = "Create"
 					tlConfirm.style.pointerEvents = "auto"
 					clearInterval(tlTimerInterval)
@@ -3004,9 +2952,14 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 		let targetedIntId = null
 		let targetedMsgId = null
 		let currentReply = null
+		let openedChat = false
 
 		function openChatPanel() {
 			chatPanel.setAttribute("open", "true")
+			if (!openedChat) {
+				;(adsbygoogle = window.adsbygoogle || []).push({});
+				openedChat = true
+			}
 			chatPanel.inert = false
 		}
 
@@ -3017,8 +2970,8 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 		}
 		closeChatPanel()
 
-		function onChatContext(ev, senderId, msgId) {
-			ev.preventDefault()
+		async function onChatContext(e, senderId, msgId) {
+			e.preventDefault()
 
 			if (chatContext.style.display == "block") {
 				chatContext.style.display = "none"
@@ -3045,10 +2998,10 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 				targetedMsgId = msgId
 				targetedIntId = senderId
 				chatContext.style.display = "block"
-				mentionUser.children[0].textContent = `${translate("mention")} ${identifier}`
-				replyUser.children[0].textContent = `${translate("replyTo")} ${identifier}`
+				mentionUser.children[0].textContent = `${await translate("mention")} ${identifier}`
+				replyUser.children[0].textContent = `${await translate("replyTo")} ${identifier}`
 				blockUser.children[0].textContent =
-					`${translate(blockedUsers.includes(senderId) ? "unblock" : "block")} ${identifier}`
+					`${await translate(blockedUsers.includes(senderId) ? "unblock" : "block")} ${identifier}`
 
 				if (senderId == intId) {
 					blockUser.style.pointerEvents = "none"
@@ -3061,32 +3014,47 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 					changeMyName.style.display = "none"
 				}
 
-				chatContext.style.left = ev.pageX - chatPanel.offsetLeft + "px"
-				chatContext.style.top = ev.pageY - chatPanel.offsetTop + "px"
+				chatContext.style.left = e.pageX - chatPanel.offsetLeft + "px"
+				chatContext.style.top = e.pageY - chatPanel.offsetTop + "px"
 			}
 		}
 
-		function redirectQueryLocation() {
-			let redirectLocation = ({
-				"?discord": "https://discord.com/invite/xbRrVSXJdZ",
-				"?twitter": "https://twitter.com/rplacetk",
-				"?reddit": "https://www.reddit.com/r/placetk",
-				"?github": "https://github.com/rplacetk",
-				"?telegram": "https://t.me/rplacelive",
-				"?admin": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-			})[location.search]
-			if (redirectLocation) {
-				location.replace(redirectLocation)
+		const verifiedAppHash = "f255e4c294a5413cce887407b91062ac162faec4cb1e6e21cdd6e4492fb270f8"
+		async function checkVerifiedAppStatus() {
+			const urlParams = new URLSearchParams(window.location.search);
+			const verifyAppValue = urlParams.get("verify-app")
+			if (!verifyAppValue) {
+				return "none"
 			}
+			const hashedValue = await sha256(verifyAppValue)
+			return hashedValue === verifiedAppHash ?  "valid" : "invalid"
 		}
-		redirectQueryLocation()
-
-		async function blockWebviewLoad() {
-			if (window.location !== window.parent.location || typeof window.Android !== "undefined" || typeof window.Kodular !== "undefined") {
-				window.location.replace("fakeapp.html")
+		function sha256(str) {
+			const encoder = new TextEncoder()
+			const data = encoder.encode(str)
+			return crypto.subtle.digest("SHA-256", data).then(hashBuffer => {
+				const hashArray = Array.from(new Uint8Array(hashBuffer))
+				return hashArray.map(byte => byte.toString(16).padStart(2, "0")).join("")
+			})
+		}
+		checkVerifiedAppStatus().then(status => {
+			if (status === "valid") {
+				console.log("Successfully verified rplace.live app");
 			}
-		}
-		blockWebviewLoad()
+			else {
+				if (window.location !== window.parent.location
+						|| typeof window.Android !== "undefined"
+						|| typeof window.Kodular !== "undefined"
+						|| status == "invalid") {
+					window.location.replace("fakeapp.html")
+					// Block interaction if page redirect was overidden
+					document.body.style.opacity = "0.6"
+					document.body.style.pointerEvents = "none"
+					alert("Error: App failed verification - game is being accessed via an unofficial or unauthorised site or app\n" +
+						"Please report to developers or visit the game online at https://rplace.live")
+				}
+			}
+		})
 
 		// Prompt user if they want to install site as PWA if they press the modal button
 		let pwaPrompter = null
@@ -3102,11 +3070,15 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 		if (!mobile) {
 			function cancelZoomGesture(e) {
 				e.preventDefault()
-				document.body.style.zoom = 1
 			}
-			document.addEventListener("gesturestart", cancelZoomGesture)
-			document.addEventListener("gesturechange", cancelZoomGesture)
-			document.addEventListener("gestureend", cancelZoomGesture)
+			window.addEventListener("wheel", function(e) {
+				if (e.target == maincontent || canvparent2.contains(e.target)) {
+					e.preventDefault()
+				}
+			}, { passive: false })
+			window.addEventListener("gesturestart", cancelZoomGesture)
+			window.addEventListener("gesturechange", cancelZoomGesture)
+			window.addEventListener("gestureend", cancelZoomGesture)
 		}
 
 		setTimeout(() => {
@@ -3115,19 +3087,84 @@ Use the 32 palette weapon to fill the 2000x2000 canvas!
 			}
 		}, 5000)
 
+		// Ads
 		if (localStorage.noad && Date.now() - localStorage.noad < 1.21e9) { // 14 days
-			ad.style.display = "none"
+			chatAd.style.display = "none"
 		}
 		else {
 			let adI = Math.floor(Math.random() * ADS.length)
 			function cycleAd() {
 				const currentAd = ADS[adI % ADS.length]
-				ad.style.setProperty("--adurl", `url(${currentAd.banners[lang] || currentAd.banners["en"]})`)
-				ad.href = currentAd.url
+				chatAd.style.setProperty("--adurl", `url(${currentAd.banners[lang] || currentAd.banners["en"]})`)
+				chatAd.href = currentAd.url
 				adI++
 			}
 			setInterval(cycleAd, 12e4) // 2 mins
 			cycleAd()
+		}
+
+		window.moduleExports = {
+			...window.moduleExports,
+			get x() {
+				return x
+			},
+			set x(value) {
+				x = value
+			},
+			get y() {
+				return y
+			},
+			set y(value) {
+				y = value
+			},
+			get pos() {
+				return pos
+			},
+			get chatMentionUser() {
+				return chatMentionUser	
+			},
+			get onChatContext() {
+				return onChatContext
+			},
+			get chatReact() {
+				return chatReact
+			},
+			get chatReply() {
+				return chatReply
+			},
+			get chatReport() {
+				return chatReport
+			},
+			get chatModerate() {
+				return chatModerate
+			},
+			get CHAT_COLOURS() {
+				return CHAT_COLOURS
+			},
+			get hash() {
+				return hash
+			},
+			get cMessages() {
+				return cMessages
+			},
+			get chatMessages() { // element
+				return chatMessages
+			},
+			get currentChannel() {
+				return currentChannel
+			},
+			get EMOJIS() {
+				return EMOJIS
+			},
+			get CUSTOM_EMOJIS() {
+				return CUSTOM_EMOJIS
+			},
+			get intIdNames() {
+				return intIdNames
+			},
+			get chatReactionsPanel() {
+				return chatReactionsPanel
+			}
 		}
 	</script>
 </html>

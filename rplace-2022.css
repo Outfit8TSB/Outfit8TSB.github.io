@@ -1,4 +1,5 @@
 :root {
+	--ui-frame-shadow: none;
 	--ui-background: #333;
 	--ui-panel-hover: lightgrey;
 	--ui-panel-bg: white;
@@ -6,6 +7,7 @@
 }
 
 :root[data-variant="dark"] {
+	--ui-frame-shadow: none;
 	--ui-background: black;
 	--ui-panel-hover: #313131;
 	--ui-panel-bg: #141414;
@@ -13,6 +15,18 @@
 }
 :root[data-variant="dark"] .icon-image {
 	filter: invert(1);
+}
+
+:root[data-variant="merry"] {
+	--ui-frame-shadow: inset 0 0 32px #10ad3a;
+	--ui-background: linear-gradient(to bottom, #568dae, #7fa2b4 30%, #8e9eac 60%, #bdb6a7 90%);
+	--ui-panel-hover: #f7c6c6;
+	--ui-panel-bg: #ffffff;
+	--ui-text: #333333;
+}
+
+::selection {
+	background-color: var(--ui-panel-hover);
 }
 
 html, body {
@@ -98,8 +112,8 @@ input[type=range]::-webkit-slider-thumb {
 	cursor: pointer;
 }
 
-input:focus, button:focus, textarea:focus {
-    outline: auto;
+input:focus-visible, button:focus-visible, textarea:focus-visible {
+	outline: auto;
 }
 
 a {
@@ -107,14 +121,19 @@ a {
 }
 
 #loadingScreen {
-    background: #d6dfe3;
+	background: #d6dfe3;
+}
+
+#maincontent {
+	box-shadow: var(--ui-frame-shadow);
 }
 
 #modal {
-    background: var(--ui-panel-bg);
-    border-radius: 8px;
-    width: min(325px, calc(100% - 64px));
-    padding: 24px;
+	border: none;
+	background: var(--ui-panel-bg);
+	border-radius: 8px;
+	width: min(325px, calc(100% - 64px));
+	padding: 24px;
 }
 
 @media (max-width:500px){
@@ -229,6 +248,8 @@ a {
 	text-align: center;
 	font-size: 25px;
 	line-height: 8px;
+	display: flex;
+	justify-content: center;
 }
 
 #helpbtn, #posel, #place, #archiveView, .toast-menu, #captchaPopup, #closebtn, #timelapsePanel {
@@ -256,7 +277,7 @@ a {
 
 #messageInput {
 	color: var(--ui-text);
-    padding-top: 8px;
+	padding-top: 8px;
 	height: max(35px, var(--message-input-height));
 }
 #messageInput[state="command"] {
@@ -269,12 +290,16 @@ a {
 	background: var(--ui-panel-hover);
 	border-radius: 4px;
 }
-.ad-close {
-    color: var(--ui-text);
+
+.chat-ad-ins::before {
+	background: var(--ui-panel-bg);
+}
+.chat-ad-close {
+	color: var(--ui-text);
 }
 
 .toast-menu {
-    padding: 10px;
+	padding: 10px;
 	line-height: 17px;
 	background: var(--ui-panel-bg);
 	border-radius: 15px;
@@ -334,7 +359,7 @@ a {
 	height: 35px;
 	aspect-ratio: 1/1;
 	text-align: center;
-    line-height: 18px;
+	line-height: 18px;
 	cursor: pointer;
 	font-weight: bolder;
 	border-radius: 10px;
@@ -351,6 +376,11 @@ a {
 .channels-options {
 	border-radius: 20px;
 	box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.channel-button {
+	background: transparent;
+	box-shadow: none;
 }
 
 #captchaPopup {
@@ -398,24 +428,24 @@ a {
 }
 
 #onlineCounter {
-    color: white;
+	color: white;
 }
 
 #popup {
-    border: none;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 0 0 1000px #0004, 0 0 100px #000;
+	border: none;
+	background: white;
+	border-radius: 20px;
+	box-shadow: 0 0 0 1000px #0004, 0 0 100px #000;
 }
 
 #popup r-close-icon {
-    position: absolute;
-    top: 9px;
-    right: 12px;
+	position: absolute;
+	top: 9px;
+	right: 12px;
 }
 
 #popup > div {
-    padding: 12px;
+	padding: 12px;
 }
 
 #eventCountdown {
